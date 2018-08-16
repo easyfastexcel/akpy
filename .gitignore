@@ -1,0 +1,6 @@
+.idea/
+__init__.py
+__pycache__/
+aktools.py
+fpath.py
+login_cred.py
