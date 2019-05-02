@@ -46,6 +46,8 @@ def get_mongo_client(host='localhost:27017', max_check_retries=5, server_selecti
 
 
 def get_latest_collections(db_obj):
+	# collection naming convention (e.g. "collection_name_yyyymmdd_hhmmss")
+	# last 16 characters is a timestamp (i.e. "_yyyymmdd_hhmmss")
     coll_current = None
     coll_previous = None
     list_latest_colls = []
@@ -53,7 +55,6 @@ def get_latest_collections(db_obj):
         coll_current = coll
 
         if coll_previous is not None:
-        	# last 16 characters is a timestamp (e.g. filename_yyyymmdd_hhmmss)
             if coll_current[:-16] != coll_previous[:-16]:
                 list_latest_colls.append(coll_previous)
         coll_previous = coll
