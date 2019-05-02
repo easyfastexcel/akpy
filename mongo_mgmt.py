@@ -45,6 +45,22 @@ def get_mongo_client(host='localhost:27017', max_check_retries=5, server_selecti
               'attempts')
 
 
+def get_latest_clvs_collections(db_obj):
+    coll_current = None
+    coll_previous = None
+    list_latest_colls = []
+    for coll in sorted(db_obj.list_collection_names()):
+        coll_current = coll
+
+        if coll_previous is not None:
+            if coll_current[:-16] != coll_previous[:-16]:
+                list_latest_colls.append(coll_previous)
+        coll_previous = coll
+    list_latest_colls.append(coll_previous)
+    
+    return list_latest_colls
+
+
 if __name__ == '__main__':
     # get_mongo_client()
     # pass

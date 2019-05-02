@@ -16,6 +16,11 @@ def time_stamp(stamp_type='default'):
         return '{}{}{}'.format(now.strftime('%Y'), now.strftime('%m'), now.strftime('%d'))
     elif stamp_type == 'dd-mmm-yy':
         return '{}-{}-{}'.format(now.strftime('%d'), now.strftime('%h'), now.strftime('%y'))
+    elif stamp_type == 'yyyy.mm.dd':
+        return '{}.{}.{}'.format(now.strftime('%Y'), now.strftime('%m'), now.strftime('%d'))
+    elif stamp_type == 'yyyy.mm.dd_hhmmss':
+        return '{}.{}.{}_{}{}{}'.format(now.strftime('%Y'), now.strftime('%m'), now.strftime('%d'),
+                                        now.strftime('%H'), now.strftime('%M'), now.strftime('%S'))
     else:
         timestamp_error = '{}.{}.{} {}:{}:{}'.format(now.strftime('%Y'), now.strftime('%m'), now.strftime('%d'),
                                                      now.strftime('%H'), now.strftime('%M'), now.strftime('%S'))
